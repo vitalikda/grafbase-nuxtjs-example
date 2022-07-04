@@ -9,22 +9,22 @@
     "graphql-codegen": "graphql-codegen -c ./codegen.yml -r dotenv/config"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "2.6.4",
-    "@graphql-codegen/typescript": "2.5.1",
-    "@graphql-codegen/typescript-operations": "2.4.2",
-    "@graphql-codegen/typescript-vue-urql": "^2.2.14",
-    "@headlessui/vue": "^1.6.5",
-    "@iconify/json": "^2.1.71",
-    "@nuxtjs/color-mode": "^3.1.4",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@nuxtjs/tailwindcss": "^5.1.3",
-    "@urql/devtools": "^2.0.3",
-    "@urql/vue": "^0.6.3",
-    "eslint": "^8.18.0",
-    "graphql": "^16.5.0",
+    "@graphql-codegen/cli": "2.7.0",
+    "@graphql-codegen/typescript": "2.6.0",
+    "@graphql-codegen/typescript-operations": "2.4.3",
+    "@graphql-codegen/typescript-vue-urql": "2.2.15",
+    "@headlessui/vue": "1.6.5",
+    "@iconify/json": "2.1.72",
+    "@nuxtjs/color-mode": "3.1.4",
+    "@nuxtjs/eslint-config-typescript": "10.0.0",
+    "@nuxtjs/tailwindcss": "5.1.3",
+    "@urql/devtools": "2.0.3",
+    "@urql/vue": "0.6.3",
+    "eslint": "8.19.0",
+    "graphql": "16.5.0",
     "nuxt": "3.0.0-rc.4",
-    "nuxt-graphql-codegen": "^0.3.3",
-    "unplugin-icons": "^0.14.7",
-    "unplugin-vue-components": "^0.21.0"
+    "nuxt-graphql-codegen": "0.3.3",
+    "unplugin-icons": "0.14.7",
+    "unplugin-vue-components": "0.21.0"
   }
 }

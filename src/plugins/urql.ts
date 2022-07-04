@@ -13,14 +13,18 @@ export default defineNuxtPlugin((nuxtApp) => {
   // Extract SSR payload once app is rendered on the server
   if (process.server) {
     nuxtApp.hook('app:rendered', () => {
-      nuxtApp.payload?.data && (nuxtApp.payload.data.urql = ssr.extractData())
+      if (nuxtApp.payload?.data) {
+        nuxtApp.payload.data.urql = ssr.extractData()
+      }
     })
   }
 
   // Restore SSR payload once app is created on the client
   if (process.client) {
     nuxtApp.hook('app:created', () => {
-      nuxtApp.payload?.data && ssr.restoreData(nuxtApp.payload.data.urql)
+      if (nuxtApp.payload?.data) {
+        ssr.restoreData(nuxtApp.payload.data.urql)
+      }
     })
   }
 
@@ -32,7 +36,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     exchanges.unshift(devtoolsExchange)
   }
 
-  // Create client
+  // Instantiate urql client
   const client = createClient({
     url: graphqlApiURL,
     requestPolicy: 'cache-and-network',
