@@ -50,8 +50,8 @@ const handleTodoListDelete = () => {
       </div>
     </div>
     <div v-if="todos" class="space-y-4">
-      <div v-for="todo in todos">
-        <TodoItem v-if="todo" :key="todo.id" :todo="todo" />
+      <div v-for="todo in todos" :key="todo?.id">
+        <TodoItem v-if="todo" :todo="todo" />
       </div>
     </div>
     <TodoItemCreate :todoListId="id" />
