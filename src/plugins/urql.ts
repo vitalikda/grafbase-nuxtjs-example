@@ -29,7 +29,12 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   // Custom exchanges
-  const exchanges = [dedupExchange, cacheExchange, ssr, fetchExchange]
+  const exchanges = [
+    dedupExchange,
+    cacheExchange,
+    ssr, // Add `ssr` in front of the `fetchExchange`
+    fetchExchange
+  ]
 
   // Devtools exchange
   if (nuxtApp._legacyContext?.isDev) {

@@ -5,8 +5,9 @@ const title = ref('')
 const { fetching, executeMutation } = useTodoListCreateMutation()
 
 const handleTodoListCreate = () => {
-  executeMutation({ title: title.value }, { additionalTypenames: ['TodoList'] })
-  title.value = ''
+  executeMutation({ title: title.value }, { additionalTypenames: ['TodoList'] }).then(() => {
+    title.value = ''
+  })
 }
 </script>
 
@@ -23,7 +24,10 @@ const handleTodoListCreate = () => {
         placeholder="Todo list title"
         class="block w-full px-2 py-1 text-sm text-gray-900 placeholder-gray-400 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
-      <button :disabled="fetching" class="px-5 py-1 text-sm text-white bg-purple-600 rounded-md disabled:bg-purple-500">
+      <button
+        :disabled="fetching"
+        class="px-5 py-1 text-sm text-white bg-purple-600 rounded-md disabled:bg-purple-500 min-w-[110px]"
+      >
         {{ fetching ? 'Creating...' : 'Create' }}
       </button>
     </div>

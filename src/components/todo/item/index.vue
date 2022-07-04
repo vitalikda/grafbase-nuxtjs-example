@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { TodoFragment, useTodoDeleteMutation, useTodoUpdateMutation } from '@/graphql/schema'
+
 interface Props {
-  todo: TodoFragment
+  id: TodoFragment['id']
+  title: TodoFragment['title']
+  complete?: TodoFragment['complete']
 }
 
-const { todo } = defineProps<Props>()
-const title = ref(todo.title)
+const todo = defineProps<Props>()
+const titleRef = ref(todo.title)
 const completed = ref(!!todo.complete)
 
 const { executeMutation: todoDelete, fetching } = useTodoDeleteMutation()
@@ -13,7 +16,11 @@ const { executeMutation: todoUpdate } = useTodoUpdateMutation()
 
 const onTodoUpdate = (newTodo: Partial<TodoFragment>) => todoUpdate({ ...todo, ...newTodo })
 
-watch(title, (newValue) => {
+const handleTodoDelete = () => {
+  todoDelete({ id: todo.id }, { additionalTypenames: ['Todo'] })
+}
+
+watch(titleRef, (newValue) => {
   if (!newValue || newValue === todo.title) return
   onTodoUpdate({ title: newValue })
 })
@@ -21,10 +28,6 @@ watch(completed, (newValue) => {
   if (newValue === todo.complete) return
   onTodoUpdate({ complete: newValue })
 })
-
-const handleTodoDelete = () => {
-  todoDelete({ id: todo.id }, { additionalTypenames: ['TodoList', 'Todo'] })
-}
 </script>
 
 <template>
@@ -41,13 +44,16 @@ const handleTodoDelete = () => {
     </div>
     <div class="relative">
       <div class="flex justify-between gap-4">
-        <div :title="title" class="flex space-x-1.5 items-center truncate">
+        <div :title="titleRef" class="flex space-x-1.5 items-center truncate">
           <input
             type="checkbox"
             v-model="completed"
             class="text-green-600 bg-white border-gray-200 rounded dark:border-gray-500 dark:bg-black accent-green-600 hover:bg-green-600 focus:ring-0"
           />
-          <input v-model="title" class="bg-transparent focus:outline-0 focus:text-blue-600 focus:dark:text-blue-400" />
+          <input
+            v-model.trim.lazy="titleRef"
+            class="bg-transparent focus:outline-0 focus:text-blue-600 focus:dark:text-blue-400"
+          />
         </div>
         <button @click="handleTodoDelete" class="text-gray-400 transition hover:text-red-400">
           <Spinner v-if="fetching" />

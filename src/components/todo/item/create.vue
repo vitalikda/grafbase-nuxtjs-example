@@ -7,8 +7,9 @@ const title = ref('')
 const { executeMutation, fetching } = useTodoCreateMutation()
 
 const handleTodoCreate = () => {
-  executeMutation({ todoListId, title: title.value }, { additionalTypenames: ['Todo'] })
-  title.value = ''
+  executeMutation({ todoListId, title: title.value }, { additionalTypenames: ['Todo'] }).then(() => {
+    title.value = ''
+  })
 }
 </script>
 
@@ -25,7 +26,7 @@ const handleTodoCreate = () => {
     />
     <button
       :disabled="fetching"
-      class="px-2 py-1 text-sm text-white bg-blue-800 rounded-md whitespace-nowrap disabled:bg-blue-400"
+      class="px-2 py-1 text-sm text-white bg-blue-800 rounded-md whitespace-nowrap disabled:bg-blue-400 min-w-[80px]"
     >
       {{ fetching ? 'Adding...' : 'Add Todo' }}
     </button>

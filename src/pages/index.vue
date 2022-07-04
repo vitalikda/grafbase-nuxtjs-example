@@ -10,7 +10,7 @@ const { data, fetching, error } = useTodoListsQuery()
     <div v-else-if="error">{{ error }}</div>
     <div v-else-if="data" class="flex gap-6">
       <div v-for="list in data.todoListCollection?.edges?.slice().reverse()" :key="list?.node?.id">
-        <TodoList v-if="list?.node" :list="list.node" />
+        <TodoList v-if="list?.node?.id" v-bind="list.node" />
       </div>
       <TodoListCreate />
     </div>
