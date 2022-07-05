@@ -11,7 +11,7 @@ const toggleTheme = () => {
       <input
         type="checkbox"
         id="theme-switcher"
-        :checked="theme.value === 'dark'"
+        :checked="theme.value !== 'light'"
         @change="toggleTheme"
         class="sr-only peer"
       />

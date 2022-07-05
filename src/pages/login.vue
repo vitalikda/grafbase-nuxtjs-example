@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const { $auth } = useNuxtApp()
+
+const login = async () => {
+  await $auth.loginWith('github')
+  await navigateTo('/')
+}
 </script>
 
 <template>
@@ -9,7 +14,7 @@ const { $auth } = useNuxtApp()
     >
       <h2 class="text-xl font-semibold">Nuxt.js - Todo Example</h2>
       <button
-        @click="() => $auth.loginWith('github')"
+        @click="login"
         class="flex items-center px-5 py-3 space-x-2 text-white bg-black rounded-lg dark:bg-zinc-700 hover:bg-gray-900"
       >
         <IconRadixIconsGithubLogo />

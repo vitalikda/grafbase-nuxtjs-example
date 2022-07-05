@@ -22,8 +22,8 @@ export default defineNuxtConfig({
   auth: {
     strategies: {
       github: {
-        clientId: 'a33f073f02cb27cfb288',
-        clientSecret: '848f862ad968de4090c8f558cbb1287668faf507',
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
         scheme: 'oauth2',
         enabled: true,
         name: 'github'
