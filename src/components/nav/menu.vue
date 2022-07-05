@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const { $auth } = useNuxtApp()
-
-console.log({ auth: $auth.loggedIn })
 </script>
 
 <template>
