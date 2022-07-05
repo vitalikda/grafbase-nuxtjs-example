@@ -1,12 +1,10 @@
-import { useNuxtApp } from '#app'
-
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware((to) => {
   const { $auth } = useNuxtApp()
-  if (!$auth.loggedIn) {
-    if (to.name !== 'login') {
-      return navigateTo('/login')
-    }
-  } else if (to.name === 'login') {
-    return abortNavigation()
+
+  if (!$auth.loggedIn.value && to.path !== '/login') {
+    return navigateTo('/login')
+  }
+  if ($auth.loggedIn.value && to.path === '/login') {
+    return navigateTo('/')
   }
 })
