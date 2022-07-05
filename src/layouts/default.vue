@@ -6,7 +6,7 @@
       <Link rel="shortcut icon" href="/favicon.png" />
     </Head>
 
-    <Body>
+    <Body class="text-black dark:text-white">
       <NavMenu />
       <main
         class="relative h-[calc(100vh_-_64px)] flex pl-6 pt-6 pr-12 overflow-x-auto dark:bg-zinc-900 transition-colors duration-300"

@@ -35,11 +35,14 @@ watch(completed, (newValue) => {
     class="relative p-3 overflow-hidden border rounded-md"
     :class="
       completed
-        ? 'bg-emerald-800 border-emerald-600'
+        ? 'bg-emerald-200 dark:bg-emerald-800 border-emerald-600'
         : 'bg-zinc-50 dark:bg-zinc-800 border-gray-200 dark:border-transparent'
     "
   >
-    <div v-if="completed" class="absolute left-0 font-bold tracking-wider text-white text-8xl -top-3 text-opacity-5">
+    <div
+      v-if="completed"
+      class="absolute inset-y-0 -inset-x-2.5 font-bold leading-[70px] text-black text-[120px] text-opacity-5"
+    >
       DONE
     </div>
     <div class="relative">
@@ -63,7 +66,7 @@ watch(completed, (newValue) => {
       <div class="flex justify-between mt-2 text-sm">
         <div
           class="text-xs px-1 py-0.5 rounded"
-          :class="completed ? 'bg-green-600 text-white' : 'bg-gray-300 dark:bg-gray-600 text-black dark:text-white'"
+          :class="completed ? 'bg-green-600 text-white' : 'bg-gray-300 dark:bg-gray-600'"
         >
           {{ completed ? 'Completed' : 'Not completed' }}
         </div>
