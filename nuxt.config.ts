@@ -10,16 +10,9 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue']
   },
 
-  buildModules: ['unplugin-icons/nuxt'],
+  buildModules: ['@nuxtjs/tailwindcss', 'unplugin-icons/nuxt', 'nuxt-graphql-codegen'],
 
-  modules: [
-    '@nuxtjs-alt/auth',
-    '@nuxtjs-alt/axios',
-    '@nuxtjs-alt/pinia',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/color-mode',
-    'nuxt-graphql-codegen'
-  ],
+  modules: ['@nuxtjs-alt/auth', '@nuxtjs-alt/axios', '@nuxtjs-alt/pinia', '@nuxtjs/color-mode'],
 
   publicRuntimeConfig: {
     graphqlApiURL: process.env.GRAFBASE_API_URL,
@@ -36,6 +29,10 @@ export default defineNuxtConfig({
         name: 'github'
       }
     }
+  },
+
+  router: {
+    middleware: ['auth']
   },
 
   vite: {
