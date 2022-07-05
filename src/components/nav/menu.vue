@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const { $auth } = useNuxtApp()
+
+const logout = async () => {
+  $auth.logout()
+  await navigateTo('/login')
+}
 </script>
 
 <template>
@@ -8,7 +13,7 @@ const { $auth } = useNuxtApp()
     <div class="flex items-center space-x-4">
       <button
         v-if="$auth.loggedIn"
-        @click="() => $auth.logout()"
+        @click="logout"
         class="px-2 py-1 text-sm border border-gray-400 rounded-lg dark:border-gray-600"
       >
         Sign Out
