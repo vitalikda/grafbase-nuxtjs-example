@@ -41,7 +41,7 @@ watch(completed, (newValue) => {
   >
     <div
       v-if="completed"
-      class="absolute inset-y-0 -inset-x-2.5 font-bold leading-[70px] text-black text-[120px] text-opacity-5"
+      class="absolute inset-y-0 -inset-x-2.5 font-bold leading-[70px] text-black text-120px text-opacity-5"
     >
       DONE
     </div>

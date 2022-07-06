@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     transpile: ['@headlessui/vue']
   },
 
-  buildModules: ['@nuxtjs/tailwindcss', 'unplugin-icons/nuxt', 'nuxt-graphql-codegen'],
+  buildModules: ['@unocss/nuxt', 'unplugin-icons/nuxt', 'nuxt-graphql-codegen'],
 
   modules: ['@nuxtjs/color-mode'],
 
@@ -37,8 +37,9 @@ export default defineNuxtConfig({
     classSuffix: ''
   },
 
-  tailwindcss: {
-    viewer: false
+  unocss: {
+    preflight: true,
+    icons: true
   },
 
   typescript: {
