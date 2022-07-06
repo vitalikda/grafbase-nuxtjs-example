@@ -3,7 +3,7 @@ import { devtoolsExchange } from '@urql/devtools'
 import { defineNuxtPlugin, useRuntimeConfig } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const { graphqlApiURL, graphqlApiKey } = useRuntimeConfig()
+  const { baseURL } = useRuntimeConfig()
 
   // Create SSR exchange
   const ssr = ssrExchange({
@@ -43,13 +43,8 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // Instantiate urql client
   const client = createClient({
-    url: graphqlApiURL,
+    url: baseURL + '/api/graphql',
     requestPolicy: 'cache-and-network',
-    fetchOptions: () => {
-      return {
-        headers: { authorization: `Bearer ${graphqlApiKey}` }
-      }
-    },
     exchanges
   })
 

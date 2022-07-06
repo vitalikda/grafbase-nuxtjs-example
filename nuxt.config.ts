@@ -15,9 +15,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/color-mode'],
 
   publicRuntimeConfig: {
-    githubClientId: process.env.GITHUB_CLIENT_ID,
-    graphqlApiURL: process.env.GRAFBASE_API_URL,
-    graphqlApiKey: process.env.GRAFBASE_API_KEY
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
+    githubClientId: process.env.GITHUB_CLIENT_ID
   },
 
   vite: {
