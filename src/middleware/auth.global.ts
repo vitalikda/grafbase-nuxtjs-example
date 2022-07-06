@@ -1,10 +1,10 @@
-export default defineNuxtRouteMiddleware((to) => {
-  const { $auth } = useNuxtApp()
+export default defineNuxtRouteMiddleware(async (to) => {
+  const user = (await useGithubUser()).value
 
-  if (!$auth.loggedIn && to.path !== '/login') {
-    return navigateTo('/login')
+  if (!user && to.path !== '/sign-in') {
+    return navigateTo('/sign-in')
   }
-  if ($auth.loggedIn && to.path === '/login') {
+  if (user && to.path === '/sign-in') {
     return navigateTo('/')
   }
 })

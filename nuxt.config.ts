@@ -12,27 +12,12 @@ export default defineNuxtConfig({
 
   buildModules: ['@nuxtjs/tailwindcss', 'unplugin-icons/nuxt', 'nuxt-graphql-codegen'],
 
-  modules: ['@nuxtjs-alt/auth', '@nuxtjs-alt/axios', '@nuxtjs-alt/pinia', '@nuxtjs/color-mode'],
+  modules: ['@nuxtjs/color-mode'],
 
   publicRuntimeConfig: {
+    githubClientId: process.env.GITHUB_CLIENT_ID,
     graphqlApiURL: process.env.GRAFBASE_API_URL,
     graphqlApiKey: process.env.GRAFBASE_API_KEY
-  },
-
-  auth: {
-    strategies: {
-      github: {
-        clientId: process.env.GITHUB_CLIENT_ID,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        scheme: 'oauth2',
-        enabled: true,
-        name: 'github'
-      }
-    }
-  },
-
-  router: {
-    middleware: ['auth']
   },
 
   vite: {
