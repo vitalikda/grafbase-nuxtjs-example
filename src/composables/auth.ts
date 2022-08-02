@@ -1,12 +1,13 @@
-export const useGithubCookie = () => useCookie('gh_token')
+export const useGithubCookie = () => useCookie('gh_token');
 
 export const githubFetch = (url: string, fetchOptions: any = {}) => {
   return $fetch(url, {
+
     baseURL: 'https://api.github.com',
     ...fetchOptions,
     headers: {
       Authorization: `token ${useGithubCookie().value}`,
-      ...fetchOptions.headers
+      ...fetchOptions.headers 
     }
   })
 }
